@@ -11,15 +11,15 @@ block = soup.findAll('h3', class_='bloko-header-section-3')  # находим к
 wb = openpyxl.load_workbook(filename='results.xlsx') # открываем файл
 worksheet = wb['Result'] # открываем нужную страницу
 
-description = []
+vacancy = []
 
 for data in block:  # проходим циклом по содержимому контейнера
-    if data.find('a', class_='serp-item__title') is not None:  # находим тег <span>
-        description.append(data.text)
+    if data.find('a', class_='serp-item__title') is not None:  # находим тег <a>
+        vacancy.append(data.text)
 
 worksheet['A1'] = "Название вакансии"
-for vacancy in description:
-    worksheet.append([vacancy])
+for item in vacancy:
+    worksheet.append([item])
 
 print('Successful!')
 wb.save('results.xlsx')
