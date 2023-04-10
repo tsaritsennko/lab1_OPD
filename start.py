@@ -1,4 +1,4 @@
-import main
+import Parser
 
 if __name__ == '__main__':
-    main.parse()
+    Parser.parse()
